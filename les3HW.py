@@ -19,7 +19,7 @@ def summ_found_odd(some_list):
 
 
 list_some_numbers = [2, 3, 5, 9, 3]
-# print(summ_found_odd(find_odd(list_some_numbers)))
+print(summ_found_odd(find_odd(list_some_numbers)))
 
 
 # 2. Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент,
@@ -38,7 +38,7 @@ def product(some_list):
         last_num -= 1
     return product_list
 
-# print(product(list_some_numbers))
+print(product(list_some_numbers))
 
 # 3. Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу
 # между максимальным и минимальным значением дробной части элементов.
@@ -73,9 +73,9 @@ def difference(some_list):
     return diff
 
 
-gg = [3.43, 43.12, 0.327, 5.34, 435.11, 86.34]
+list_real_numbers = [3.43, 43.12, 0.327, 5.34, 435.11, 86.34]
 
-# print (round(difference(find_min_max(fraction_numbers(find_min_max(gg)))), 5))
+print (round(difference(find_min_max(fraction_numbers(find_min_max(list_real_numbers)))), 5))
 
 # 4. Напишите программу, которая будет преобразовывать десятичное число в двоичное (без встроенных функций).
 # Пример:
@@ -101,7 +101,7 @@ def print_bin(some_list):
 
 
 x_denary = 1
-# print_bin(binary(x_denary))
+print_bin(binary(x_denary))
 
 
 # 5. Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
