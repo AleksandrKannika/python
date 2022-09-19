@@ -11,33 +11,33 @@ print(round(a,d))
 # 2. Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 #    "20" -> [2, 2, 5]
 
-n = 63
-c = 2
-list1 = []
-while c <= n:
-    if n%c == 0:
-        n = n/c
-        list1.append(c)
+nat_num = 63
+multipliers = 2
+list_prime_fuc = []
+while multipliers <= nat_num:
+    if nat_num%multipliers == 0:
+        nat_num = nat_num/multipliers
+        list_prime_fuc.append(multipliers)
     else:
-        c += 1
+        multipliers += 1
 
-print(list1)
+print(list_prime_fuc)
 
 
 # 3. Задайте последовательность чисел. Напишите программу, которая выведет список
 #    неповторяющихся элементов исходной последовательности.
 #    [1, 1, 2, 3, 4, 5, 5] -> [2, 3, 4]
 
-x = [1, 1, 2, 3, 4, 5, 5]
-c = []
-i = 0
-while i < len(x)-1:
-    if x[i] == x[i+1]:
-        i += 2
+follower_list = [1, 1, 2, 3, 4, 5, 5]
+unique_num = []
+count_item = 0
+while count_item < len(follower_list)-1:
+    if follower_list[count_item] == follower_list[count_item+1]:
+        count_item += 2
     else:
-        c.append(x[i])
-        i += 1
-print(c)
+        unique_num.append(follower_list[count_item])
+        count_item += 1
+print(unique_num)
 
 
 # 4. Задана натуральная степень k. Сформировать случайным образом список коэффициентов
