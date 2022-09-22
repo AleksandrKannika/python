@@ -81,45 +81,84 @@ elif mode == 2:
 
 import re
 
+def check_combinations(boar,coun,d):
+    r = 0
+    a = boar[coun[0]]
+    b = boar[coun[1]]
+    c = boar[coun[2]]
+    while r < 3:
+        if a == d and b == d and c == d:
+            print(f"\n{d} Победил")
+            return True
+        else:
+            a = boar[coun[0 + 3]]
+            b = boar[coun[1 + 3]]
+            c = boar[coun[2 + 3]]
+        r += 1
+    r = 0
+    a = boar[coun[0]]
+    b = boar[coun[3]]
+    c = boar[coun[6]]
+    while r < 3:
+        if a == d and b == d and c == d:
+            print(f"\n{d} Победил")
+            return True
+        else:
+            a = boar[coun[0 + 1]]
+            b = boar[coun[3 + 1]]
+            c = boar[coun[6 + 1]]
+        r += 1
+    r = 0
+    a = boar[coun[0]]
+    b = boar[coun[4]]
+    c = boar[coun[8]]
+    while r < 2:
+        if a == d and b == d and c == d:
+            print(f"\n{d} Победил")
+            return True
+        else:
+            a = boar[coun[0 + 2]]
+            c = boar[coun[8 - 2]]
+        r += 1
 
-board = "| 1 | 2 | 3 |\n-------------\n| 4 | 5 | 6 |\n-------------\n| 7 | 8 | 9 |"
-b = 1
-cd = 0
-# player_x = input("'x' Ваш ход: ")
-# player_o = input("'o' Ваш ход: ")
-while cd < 9:
-    if b == 1:
+
+board = "| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |"
+exam_board = "| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |"
+index_board = [i for i in range(len(board)) if board[i].isdigit()]
+print(index_board)
+
+who_is_now = "o"
+who_is_next = "x"
+moves_made = 0
+
+while moves_made < 9:
+    if check_combinations(board,index_board,who_is_now) == True:
+        print(re.sub(r"\d+", "-", board))
+        break
+    if who_is_next == "x":
         player_x = input("\n'x' Ваш ход: ")
-        print()
-        board = re.sub(player_x,"x",board)
-        cd += 1
-        b -= 1
-        print(board)
+        if player_x in board:
+            print()
+            board = re.sub(player_x,"x",board)
+            moves_made += 1
+            who_is_next = "o"
+            who_is_now = "x"
+            print(board)
     else:
         player_o = input("\n'o' Ваш ход: ")
-        print()
-        board = re.sub(player_o,"o",board)
-        cd += 1
-        b += 1
-        print(board)
-
-# a = re.sub(player_x,"x",a)
-# a = re.sub(player_o,"o",a)
-# print(a)
+        if player_o in board:
+            print()
+            board = re.sub(player_o,"o",board)
+            moves_made += 1
+            who_is_next = "x"
+            who_is_now = "o"
+            print(board)
 
 
 
-
-
-
-b = "4"
-# c = list(map(lambda x: int(x) if x.isdigit() else x, a))
-
-# c ='1'
-# if c == "1":
-#     c = re.sub("1","x",a)
-# print(re.sub(r"\d+", "-", c))
 
 #     # 4. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+
+
 
 #     # **Входные и выходные данные хранятся в отдельных текстовых файлах.**
