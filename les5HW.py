@@ -1,20 +1,28 @@
-# # 1. Напишите программу, удаляющую из текста все слова, содержащие ""абв"".
+# 1. Напишите программу, удаляющую из текста все слова, содержащие ""абв"".
 
+text = 'Мы неабв очень любим Питон иабв Джавабв'
+text_find = 'абв'
+index = 0
+list1 = text.split(' ')
+print(list1)
+list2 = [item for item in list1 if text_find not in item]
+print(list2)
 
-
-# # 2. Создайте программу для игры с конфетами человек против человека.
-# #    Условие задачи: На столе лежит 2021 конфета. Играют два игрока делая ход друг после друга.
-# #    Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет.
-# #    Все конфеты оппонента достаются сделавшему последний ход. 
-# #    Сколько конфет нужно взять первому игроку, чтобы забрать все конфеты у своего конкурента?
-# #    a) Добавьте игру против бота
-# #    b) Подумайте как наделить бота ""интеллектом""
+# 2. Создайте программу для игры с конфетами человек против человека.
+#    Условие задачи: На столе лежит 2021 конфета. Играют два игрока делая ход друг после друга.
+#    Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет.
+#    Все конфеты оппонента достаются сделавшему последний ход. 
+#    Сколько конфет нужно взять первому игроку, чтобы забрать все конфеты у своего конкурента?
+#    a) Добавьте игру против бота
+#    b) Подумайте как наделить бота ""интеллектом""
 import random
 
 total = 2021
 was_taken = 0
-player1 = 1
-player2 = 0
+player1 = random.randint(0,1)
+player2 = 1
+if player1 == player2:
+    player2 = 0
 mode = int(input("Выберите режим игры: \n 1 - если с другим игроком \n 2 - если с ботом \n:"))
 if mode == 1:
     while was_taken < total:
@@ -157,8 +165,47 @@ while moves_made < 9:
 
 
 
-#     # 4. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+    # 4. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+
+input_date = open("input_date.txt","r")
+encoded_date = open("encoded_date.txt","r")
+data_base = open("data_base.txt","w")
+save_data = input_date.read()
+save_data2 = encoded_date.read()
+def encoding(text):
+    str_line = text[0]
+    int_line = 0
+    str_res = ""
+    for i in text:
+        if i == str_line:
+            int_line += 1
+        else:   
+            str_res += str(int_line) + str_line
+            str_line = i
+            int_line = 1
+    str_res += str(int_line) + str_line
+    str_line = i
+    int_line = 1
+    return str_res
+
+def decod(text):
+    str_res = ""
+    int_line = 0
+    for i in text:
+        if i.isdigit():
+            int_line = i
+        else:
+            str_res += i * int(int_line)
+    return str_res
 
 
+def rec_in_file(what_rec):
+    data_base.write(what_rec)
+    data_base.write("\n")
+    
 
-#     # **Входные и выходные данные хранятся в отдельных текстовых файлах.**
+rec_in_file(decod(save_data2))
+rec_in_file(encoding(save_data))
+
+input_date.close()
+    # **Входные и выходные данные хранятся в отдельных текстовых файлах.**
